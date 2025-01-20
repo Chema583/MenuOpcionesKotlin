@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.EjercicioMenuOpciones" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.EjercicioMenuOpciones" parent="Base.Theme.EjercicioMenuOpciones" />
+
+    <style name="Theme.EjercicioMenuOpciones.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.EjercicioMenuOpciones.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.EjercicioMenuOpciones.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
