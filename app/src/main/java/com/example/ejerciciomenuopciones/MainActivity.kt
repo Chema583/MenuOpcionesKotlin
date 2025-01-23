@@ -1,6 +1,7 @@
 package com.example.ejerciciomenuopciones
 
 import android.os.Bundle
+import android.view.ContextMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -8,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.example.ejerciciomenuopciones.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,17 +23,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //setSupportActionBar(binding.toolbar)
-
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        /*binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
-        }*/
+        registerForContextMenu(binding.imageView1)
+        registerForContextMenu(binding.imageView2)
+        registerForContextMenu(binding.imageView3)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -44,10 +42,27 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        return itemSeleccionado(item)
+    }
+
+    private fun itemSeleccionado(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+            else -> false
         }
+    }
+
+
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return itemSeleccionado(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {
